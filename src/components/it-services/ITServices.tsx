@@ -24,6 +24,21 @@ import CloseRounded from '@mui/icons-material/CloseRounded';
 import FormControl from '@mui/joy/FormControl';
 import Stack from '@mui/joy/Stack';
 
+import Sheet from '@mui/joy/Sheet';
+import { styled } from '@mui/joy/styles';
+
+
+const Item = styled(Sheet)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography['body-sm'],
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  borderRadius: 4,
+  color: theme.vars.palette.text.secondary,
+  ...theme.applyStyles('dark', {
+    backgroundColor: theme.palette.background.level1,
+  }),
+}));
 
 function Services() {
   const [files, setFiles] = useState<File[]>([]);
@@ -78,808 +93,6 @@ function Services() {
   };
 
 
-  const renderApproveContent = (position: string) => {
-    switch (position) {
-      case 's':
-        return null;
-      case 'm':
-        return (
-          <Grid container spacing={1} >
-
-                    <Grid item xs={2} >
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Manager Approve</FormLabel>
-                        <Input variant="outlined" color="success" type='text' placeholder='IT Manager Name' />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Status</FormLabel>
-                        <Select
-                            action={action}
-                            value={value3}
-                            placeholder="Status"
-                            onChange={(e, newValue) => setValue3(newValue)}
-                            variant="outlined" color="success"
-                            {...(value3 && {
-                                // display the button and remove select indicator
-                                // when user has selected a value
-                                endDecorator: (
-                                    <IconButton
-                                        size="sm"
-                                        variant="plain"
-                                        color="neutral"
-                                        onMouseDown={(event) => {
-                                            // don't open the popup when clicking on this button
-                                            event.stopPropagation();
-                                        }}
-                                        onClick={() => {
-                                            setValue1(null);
-                                            action.current?.focusVisible();
-                                        }}
-                                    >
-                                        <CloseRounded />
-                                    </IconButton>
-                                ),
-                                indicator: null,
-                            })}
-
-                        >
-                            <Option value="approve">อนุมัติ</Option>
-                            <Option value="unapprove">ไม่อนุมัติ</Option>
-                            <Option value="discuss">พิจารณา</Option>
-                            <Option value="cancel">ยกเลิก</Option>
-                        </Select>
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Date</FormLabel>
-                        <Input type='date' variant="outlined" color="success" />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2} >
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Director Approve</FormLabel>
-                        <Input variant="outlined" color="warning" type='text' placeholder='IT Manager Name' />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Status</FormLabel>
-                        <Select
-                            action={action}
-                            value={value4}
-                            placeholder="Status"
-                            onChange={(e, newValue) => setValue4(newValue)}
-                            variant="outlined" color="warning"
-                            {...(value4 && {
-                                // display the button and remove select indicator
-                                // when user has selected a value
-                                endDecorator: (
-                                    <IconButton
-                                        size="sm"
-                                        variant="plain"
-                                        color="neutral"
-                                        onMouseDown={(event) => {
-                                            // don't open the popup when clicking on this button
-                                            event.stopPropagation();
-                                        }}
-                                        onClick={() => {
-                                            setValue2(null);
-                                            action.current?.focusVisible();
-                                        }}
-                                    >
-                                        <CloseRounded />
-                                    </IconButton>
-                                ),
-                                indicator: null,
-                            })}
-
-                        >
-                            <Option value="approve">อนุมัติ</Option>
-                            <Option value="unapprove">ไม่อนุมัติ</Option>
-                            <Option value="discuss">พิจารณา</Option>
-                            <Option value="cancel">ยกเลิก</Option>
-                        </Select>
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Date</FormLabel>
-                        <Input type='date' variant="outlined" color="warning" />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Stack spacing={2}>
-                            {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                            <Typography variant="h6">Note</Typography>
-
-                            <Textarea
-                                minRows={2}
-                                placeholder="Type in here…"
-                                variant="soft"
-                                color="success"
-                                sx={{
-                                    borderBottom: '2px solid',
-                                    borderColor: 'neutral.outlinedBorder',
-                                    borderRadius: 0,
-                                    '&:hover': {
-                                        borderColor: 'neutral.outlinedHoverBorder',
-                                    },
-                                    '&::before': {
-                                        border: '1px solid var(--Textarea-focusedHighlight)',
-                                        transform: 'scaleX(0)',
-                                        left: 0,
-                                        right: 0,
-                                        bottom: '-2px',
-                                        top: 'unset',
-                                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                                        borderRadius: 0,
-                                    },
-                                    '&:focus-within::before': {
-                                        transform: 'scaleX(1)',
-                                    },
-                                }}
-                            />
-                            {/* </Skeleton> */}
-                        </Stack>
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Stack spacing={2}>
-                            {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                            <Typography variant="h6">Note</Typography>
-
-                            <Textarea
-                                minRows={2}
-                                placeholder="Type in here…"
-                                variant="soft"
-                                color="warning"
-                                sx={{
-                                    borderBottom: '2px solid',
-                                    borderColor: 'neutral.outlinedBorder',
-                                    borderRadius: 0,
-                                    '&:hover': {
-                                        borderColor: 'neutral.outlinedHoverBorder',
-                                    },
-                                    '&::before': {
-                                        border: '1px solid var(--Textarea-focusedHighlight)',
-                                        transform: 'scaleX(0)',
-                                        left: 0,
-                                        right: 0,
-                                        bottom: '-2px',
-                                        top: 'unset',
-                                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                                        borderRadius: 0,
-                                    },
-                                    '&:focus-within::before': {
-                                        transform: 'scaleX(1)',
-                                    },
-                                }}
-                            />
-                            {/* </Skeleton> */}
-                        </Stack>
-                    </Grid>
-
-
-                </Grid>
-        );
-      case 'd':
-        return (
-          <Grid container spacing={1} >
-
-                    <Grid item xs={2} >
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Manager Approve</FormLabel>
-                        <Input variant="outlined" color="success" type='text' placeholder='IT Manager Name' />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Status</FormLabel>
-                        <Select
-                            action={action}
-                            value={value3}
-                            placeholder="Status"
-                            onChange={(e, newValue) => setValue3(newValue)}
-                            variant="outlined" color="success"
-                            {...(value3 && {
-                                // display the button and remove select indicator
-                                // when user has selected a value
-                                endDecorator: (
-                                    <IconButton
-                                        size="sm"
-                                        variant="plain"
-                                        color="neutral"
-                                        onMouseDown={(event) => {
-                                            // don't open the popup when clicking on this button
-                                            event.stopPropagation();
-                                        }}
-                                        onClick={() => {
-                                            setValue1(null);
-                                            action.current?.focusVisible();
-                                        }}
-                                    >
-                                        <CloseRounded />
-                                    </IconButton>
-                                ),
-                                indicator: null,
-                            })}
-
-                        >
-                            <Option value="approve">อนุมัติ</Option>
-                            <Option value="unapprove">ไม่อนุมัติ</Option>
-                            <Option value="discuss">พิจารณา</Option>
-                            <Option value="cancel">ยกเลิก</Option>
-                        </Select>
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Date</FormLabel>
-                        <Input type='date' variant="outlined" color="success" />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2} >
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Director Approve</FormLabel>
-                        <Input variant="outlined" color="warning" type='text' placeholder='IT Manager Name' />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Status</FormLabel>
-                        <Select
-                            action={action}
-                            value={value4}
-                            placeholder="Status"
-                            onChange={(e, newValue) => setValue4(newValue)}
-                            variant="outlined" color="warning"
-                            {...(value4 && {
-                                // display the button and remove select indicator
-                                // when user has selected a value
-                                endDecorator: (
-                                    <IconButton
-                                        size="sm"
-                                        variant="plain"
-                                        color="neutral"
-                                        onMouseDown={(event) => {
-                                            // don't open the popup when clicking on this button
-                                            event.stopPropagation();
-                                        }}
-                                        onClick={() => {
-                                            setValue2(null);
-                                            action.current?.focusVisible();
-                                        }}
-                                    >
-                                        <CloseRounded />
-                                    </IconButton>
-                                ),
-                                indicator: null,
-                            })}
-
-                        >
-                            <Option value="approve">อนุมัติ</Option>
-                            <Option value="unapprove">ไม่อนุมัติ</Option>
-                            <Option value="discuss">พิจารณา</Option>
-                            <Option value="cancel">ยกเลิก</Option>
-                        </Select>
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>Date</FormLabel>
-                        <Input type='date' variant="outlined" color="warning" />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Stack spacing={2}>
-                            {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                            <Typography variant="h6">Note</Typography>
-
-                            <Textarea
-                                minRows={2}
-                                placeholder="Type in here…"
-                                variant="soft"
-                                color="success"
-                                sx={{
-                                    borderBottom: '2px solid',
-                                    borderColor: 'neutral.outlinedBorder',
-                                    borderRadius: 0,
-                                    '&:hover': {
-                                        borderColor: 'neutral.outlinedHoverBorder',
-                                    },
-                                    '&::before': {
-                                        border: '1px solid var(--Textarea-focusedHighlight)',
-                                        transform: 'scaleX(0)',
-                                        left: 0,
-                                        right: 0,
-                                        bottom: '-2px',
-                                        top: 'unset',
-                                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                                        borderRadius: 0,
-                                    },
-                                    '&:focus-within::before': {
-                                        transform: 'scaleX(1)',
-                                    },
-                                }}
-                            />
-                            {/* </Skeleton> */}
-                        </Stack>
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Stack spacing={2}>
-                            {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                            <Typography variant="h6">Note</Typography>
-
-                            <Textarea
-                                minRows={2}
-                                placeholder="Type in here…"
-                                variant="soft"
-                                color="warning"
-                                sx={{
-                                    borderBottom: '2px solid',
-                                    borderColor: 'neutral.outlinedBorder',
-                                    borderRadius: 0,
-                                    '&:hover': {
-                                        borderColor: 'neutral.outlinedHoverBorder',
-                                    },
-                                    '&::before': {
-                                        border: '1px solid var(--Textarea-focusedHighlight)',
-                                        transform: 'scaleX(0)',
-                                        left: 0,
-                                        right: 0,
-                                        bottom: '-2px',
-                                        top: 'unset',
-                                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                                        borderRadius: 0,
-                                    },
-                                    '&:focus-within::before': {
-                                        transform: 'scaleX(1)',
-                                    },
-                                }}
-                            />
-                            {/* </Skeleton> */}
-                        </Stack>
-                    </Grid>
-
-
-                </Grid>
-        );
-        case 'admin':
-        return (
-          <Grid container spacing={1} >
-
-                    <Grid item xs={2} >
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Manager Approve</FormLabel>
-                        <Input variant="outlined" color="success" type='text' placeholder='IT Manager Name' />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Manager Status</FormLabel>
-                        <Select
-                            action={action}
-                            value={value3}
-                            placeholder="Status"
-                            onChange={(e, newValue) => setValue3(newValue)}
-                            variant="outlined" color="success"
-                            {...(value3 && {
-                                // display the button and remove select indicator
-                                // when user has selected a value
-                                endDecorator: (
-                                    <IconButton
-                                        size="sm"
-                                        variant="plain"
-                                        color="neutral"
-                                        onMouseDown={(event) => {
-                                            // don't open the popup when clicking on this button
-                                            event.stopPropagation();
-                                        }}
-                                        onClick={() => {
-                                            setValue1(null);
-                                            action.current?.focusVisible();
-                                        }}
-                                    >
-                                        <CloseRounded />
-                                    </IconButton>
-                                ),
-                                indicator: null,
-                            })}
-
-                        >
-                            <Option value="approve">อนุมัติ</Option>
-                            <Option value="unapprove">ไม่อนุมัติ</Option>
-                            <Option value="discuss">พิจารณา</Option>
-                            <Option value="cancel">ยกเลิก</Option>
-                        </Select>
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Manager Date</FormLabel>
-                        <Input type='date' variant="outlined" color="success" />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2} >
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Director Approve</FormLabel>
-                        <Input variant="outlined" color="warning" type='text' placeholder='IT Manager Name' />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Director Status</FormLabel>
-                        <Select
-                            action={action}
-                            value={value4}
-                            placeholder="Status"
-                            onChange={(e, newValue) => setValue4(newValue)}
-                            variant="outlined" color="warning"
-                            {...(value4 && {
-                                // display the button and remove select indicator
-                                // when user has selected a value
-                                endDecorator: (
-                                    <IconButton
-                                        size="sm"
-                                        variant="plain"
-                                        color="neutral"
-                                        onMouseDown={(event) => {
-                                            // don't open the popup when clicking on this button
-                                            event.stopPropagation();
-                                        }}
-                                        onClick={() => {
-                                            setValue2(null);
-                                            action.current?.focusVisible();
-                                        }}
-                                    >
-                                        <CloseRounded />
-                                    </IconButton>
-                                ),
-                                indicator: null,
-                            })}
-
-                        >
-                            <Option value="approve">อนุมัติ</Option>
-                            <Option value="unapprove">ไม่อนุมัติ</Option>
-                            <Option value="discuss">พิจารณา</Option>
-                            <Option value="cancel">ยกเลิก</Option>
-                        </Select>
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Director Date</FormLabel>
-                        <Input type='date' variant="outlined" color="warning" />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Stack spacing={2}>
-                            {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                            <Typography variant="h6">IT Manager Note</Typography>
-
-                            <Textarea
-                                minRows={2}
-                                placeholder="Type in here…"
-                                variant="soft"
-                                color="success"
-                                sx={{
-                                    borderBottom: '2px solid',
-                                    borderColor: 'neutral.outlinedBorder',
-                                    borderRadius: 0,
-                                    '&:hover': {
-                                        borderColor: 'neutral.outlinedHoverBorder',
-                                    },
-                                    '&::before': {
-                                        border: '1px solid var(--Textarea-focusedHighlight)',
-                                        transform: 'scaleX(0)',
-                                        left: 0,
-                                        right: 0,
-                                        bottom: '-2px',
-                                        top: 'unset',
-                                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                                        borderRadius: 0,
-                                    },
-                                    '&:focus-within::before': {
-                                        transform: 'scaleX(1)',
-                                    },
-                                }}
-                            />
-                            {/* </Skeleton> */}
-                        </Stack>
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Stack spacing={2}>
-                            {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                            <Typography variant="h6">IT Director Note</Typography>
-
-                            <Textarea
-                                minRows={2}
-                                placeholder="Type in here…"
-                                variant="soft"
-                                color="warning"
-                                sx={{
-                                    borderBottom: '2px solid',
-                                    borderColor: 'neutral.outlinedBorder',
-                                    borderRadius: 0,
-                                    '&:hover': {
-                                        borderColor: 'neutral.outlinedHoverBorder',
-                                    },
-                                    '&::before': {
-                                        border: '1px solid var(--Textarea-focusedHighlight)',
-                                        transform: 'scaleX(0)',
-                                        left: 0,
-                                        right: 0,
-                                        bottom: '-2px',
-                                        top: 'unset',
-                                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                                        borderRadius: 0,
-                                    },
-                                    '&:focus-within::before': {
-                                        transform: 'scaleX(1)',
-                                    },
-                                }}
-                            />
-                            {/* </Skeleton> */}
-                        </Stack>
-                    </Grid>
-
-
-                </Grid>
-        );
-        case 'assign':
-        return (
-          <Grid container spacing={1} >
-
-                    <Grid item xs={2} >
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Manager Approve</FormLabel>
-                        <Input variant="outlined" color="success" type='text' placeholder='IT Manager Name' />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Manager Status</FormLabel>
-                        <Select
-                            action={action}
-                            value={value3}
-                            placeholder="Status"
-                            onChange={(e, newValue) => setValue3(newValue)}
-                            variant="outlined" color="success"
-                            {...(value3 && {
-                                // display the button and remove select indicator
-                                // when user has selected a value
-                                endDecorator: (
-                                    <IconButton
-                                        size="sm"
-                                        variant="plain"
-                                        color="neutral"
-                                        onMouseDown={(event) => {
-                                            // don't open the popup when clicking on this button
-                                            event.stopPropagation();
-                                        }}
-                                        onClick={() => {
-                                            setValue1(null);
-                                            action.current?.focusVisible();
-                                        }}
-                                    >
-                                        <CloseRounded />
-                                    </IconButton>
-                                ),
-                                indicator: null,
-                            })}
-
-                        >
-                            <Option value="approve">อนุมัติ</Option>
-                            <Option value="unapprove">ไม่อนุมัติ</Option>
-                            <Option value="discuss">พิจารณา</Option>
-                            <Option value="cancel">ยกเลิก</Option>
-                        </Select>
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Manager Date</FormLabel>
-                        <Input type='date' variant="outlined" color="success" />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2} >
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Director Approve</FormLabel>
-                        <Input variant="outlined" color="warning" type='text' placeholder='IT Manager Name' />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Director Status</FormLabel>
-                        <Select
-                            action={action}
-                            value={value4}
-                            placeholder="Status"
-                            onChange={(e, newValue) => setValue4(newValue)}
-                            variant="outlined" color="warning"
-                            {...(value4 && {
-                                // display the button and remove select indicator
-                                // when user has selected a value
-                                endDecorator: (
-                                    <IconButton
-                                        size="sm"
-                                        variant="plain"
-                                        color="neutral"
-                                        onMouseDown={(event) => {
-                                            // don't open the popup when clicking on this button
-                                            event.stopPropagation();
-                                        }}
-                                        onClick={() => {
-                                            setValue2(null);
-                                            action.current?.focusVisible();
-                                        }}
-                                    >
-                                        <CloseRounded />
-                                    </IconButton>
-                                ),
-                                indicator: null,
-                            })}
-
-                        >
-                            <Option value="approve">อนุมัติ</Option>
-                            <Option value="unapprove">ไม่อนุมัติ</Option>
-                            <Option value="discuss">พิจารณา</Option>
-                            <Option value="cancel">ยกเลิก</Option>
-                        </Select>
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                        <FormLabel>IT Director Date</FormLabel>
-                        <Input type='date' variant="outlined" color="warning" />
-                        {/* </Skeleton> */}
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Stack spacing={2}>
-                            {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                            <Typography variant="h6">IT Manager Note</Typography>
-
-                            <Textarea
-                                minRows={2}
-                                placeholder="Type in here…"
-                                variant="soft"
-                                color="success"
-                                sx={{
-                                    borderBottom: '2px solid',
-                                    borderColor: 'neutral.outlinedBorder',
-                                    borderRadius: 0,
-                                    '&:hover': {
-                                        borderColor: 'neutral.outlinedHoverBorder',
-                                    },
-                                    '&::before': {
-                                        border: '1px solid var(--Textarea-focusedHighlight)',
-                                        transform: 'scaleX(0)',
-                                        left: 0,
-                                        right: 0,
-                                        bottom: '-2px',
-                                        top: 'unset',
-                                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                                        borderRadius: 0,
-                                    },
-                                    '&:focus-within::before': {
-                                        transform: 'scaleX(1)',
-                                    },
-                                }}
-                            />
-                            {/* </Skeleton> */}
-                        </Stack>
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Stack spacing={2}>
-                            {/* <Skeleton loading={loading2} variant="rectangular"> */}
-                            <Typography variant="h6">IT Director Note</Typography>
-
-                            <Textarea
-                                minRows={2}
-                                placeholder="Type in here…"
-                                variant="soft"
-                                color="warning"
-                                sx={{
-                                    borderBottom: '2px solid',
-                                    borderColor: 'neutral.outlinedBorder',
-                                    borderRadius: 0,
-                                    '&:hover': {
-                                        borderColor: 'neutral.outlinedHoverBorder',
-                                    },
-                                    '&::before': {
-                                        border: '1px solid var(--Textarea-focusedHighlight)',
-                                        transform: 'scaleX(0)',
-                                        left: 0,
-                                        right: 0,
-                                        bottom: '-2px',
-                                        top: 'unset',
-                                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                                        borderRadius: 0,
-                                    },
-                                    '&:focus-within::before': {
-                                        transform: 'scaleX(1)',
-                                    },
-                                }}
-                            />
-                            {/* </Skeleton> */}
-                        </Stack>
-                    </Grid>
-
-                    
-                    <Grid size="auto">
-                                {/* <Skeleton loading={loading3} variant="rectangular"> */}
-                                <FormLabel>Assign Department</FormLabel>
-
-                                <Box
-                                    sx={{
-
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                    }}
-                                >
-                                    <Typography
-                                        id="example-payment-channel-label"
-                                        level="title-md"
-                                        textColor={'text.secondary'}
-                                        fontWeight="xl"
-                                    >
-
-                                    </Typography>
-
-                                </Box>
-                                <Autocomplete
-                                    options={top101Films.map((option) => option.title)}
-                                    id="auto-highlight"
-                                    variant="outlined" color="danger"
-                                    placeholder="Assign..."
-                                    autoHighlight
-                                    renderInput={(params) => (
-                                        <TextField {...params} label="autoHighlight" variant="standard" />
-                                    )}
-                                />
-
-
-
-                                {/* </Skeleton> */}
-                            </Grid>
-
-                </Grid>
-        );
-    }
-
-  }
-
   const renderProgramsContent = (selectedPro: string) => {
     switch (selectedPro) {
       case '1':
@@ -913,6 +126,7 @@ function Services() {
         return null;
     }
   }
+
   const renderRequestContent = (selectedType: string) => {
     switch (selectedType) {
       case '1':
@@ -977,63 +191,11 @@ function Services() {
       <Container maxWidth="lg">
         <br />
         <Paper sx={{ width: '100%', padding: 2, boxShadow: 10 }}>
+          <Grid xs={6} >
+            <Box><h2>User ร้องขอ</h2></Box>
+          </Grid>
           <Grid container spacing={2} sx={{ flexGrow: 1 }}>
-            <Grid xs={6}>
-            </Grid>
-            <Grid xs={6}>
-            <Box  sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Select
-                  value={selectedApproved}
-                  onChange={handleApprovedChange}
-                  variant='outlined' color='primary'
-                  placeholder="สิทธิ์…"
-                  indicator={<KeyboardArrowDown />}
-                  sx={{ width:120,
-                    [`& .${selectClasses.indicator}`]: {
-                      transition: '0.2s',
-                      [`&.${selectClasses.expanded}`]: {
-                        transform: 'rotate(-180deg)',
-                      },
-                    },
-                  }}
-                >
-                  <Option value="s">employee</Option>
-                  <Option value="m">manager</Option>
-                  <Option value="d">director</Option>
-                  <Option value="admin">it-approve</Option>
-                  <Option value="assign">it-assign</Option>
-                </Select>
-              </Box>
-              {/* <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <FormLabel>
-                  <h5>Request No.</h5>
-                  <Input placeholder="67-0001"
-                    sx={{
-                      width: 100, '--Input-radius': '0px',
-                      borderBottom: '2px solid',
-                      borderColor: 'neutral.outlinedBorder',
-                      '&:hover': {
-                        borderColor: 'neutral.outlinedHoverBorder',
-                      },
-                      '&::before': {
-                        border: '1px solid var(--Input-focusedHighlight)',
-                        transform: 'scaleX(0)',
-                        left: 0,
-                        right: 0,
-                        bottom: '-2px',
-                        top: 'unset',
-                        transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-                        borderRadius: 0,
-                      },
-                      '&:focus-within::before': {
-                        transform: 'scaleX(1)',
-                      },
-                    }}
-                    variant="outlined" color="primary" type="text"
-                  />
-                </FormLabel>
-              </Box> */}
-            </Grid>
+
 
             <Grid xs={5}>
               <Box sx={{ my: 1 }}>
@@ -1075,13 +237,283 @@ function Services() {
                 </Select>
               </Box>
 
-              
+
 
             </Grid>
 
             <Grid xs={7}>
               {renderRequestContent(selectedType)}
               {renderProgramsContent(selectedPro)}
+
+              <Box sx={{ my: 1 }}>
+
+                <FormLabel>หัวข้อเรื่อง</FormLabel>
+                <Textarea
+                  size="md" name="Size" placeholder="Subject here…"
+                  variant="outlined" color="primary"
+                />
+              </Box>
+
+
+
+              <Box sx={{ my: 1 }}>
+                <FormLabel>รายละเอียด</FormLabel>
+                <Textarea
+                  minRows={3}
+                  placeholder="Type in here…"
+                  variant="outlined"
+                  color="primary"
+                  maxRows={3}
+                  sx={{
+                    borderBottom: '2px solid',
+                    borderColor: 'neutral.outlinedBorder',
+                    borderRadius: 0,
+                    '&:hover': {
+                      borderColor: 'neutral.outlinedHoverBorder',
+                    },
+                    '&::before': {
+                      border: '1px solid var(--Textarea-focusedHighlight)',
+                      transform: 'scaleX(0)',
+                      left: 0,
+                      right: 0,
+                      bottom: '-2px',
+                      top: 'unset',
+                      transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
+                      borderRadius: 0,
+                    },
+                    '&:focus-within::before': {
+                      transform: 'scaleX(1)',
+                    },
+                  }}
+                />
+              </Box>
+
+              <Box sx={{ border: '1px dashed', borderColor: 'lightblue', borderRadius: 'sm', p: 2 }}>
+                <FormLabel>แนบไฟล์</FormLabel>
+                <Button
+                  component="label"
+                  role={undefined}
+                  tabIndex={-1}
+                  variant="outlined"
+                  color="primary"
+                  startDecorator={
+                    <SvgIcon>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                        />
+                      </svg>
+                    </SvgIcon>
+                  }
+                >
+                  Upload a file
+                  <input
+                    type="file"
+                    multiple
+                    hidden
+                    onChange={handleFileUpload}
+                  />
+                </Button>
+
+                <List>
+                  {files.map((file, index) => (
+                    <ListItem
+                      sx={{ border: '1px dashed', borderColor: 'lightblue', borderRadius: 'sm', margin: 1 }}
+                      key={index}
+                      endAction={
+                        <IconButton edge="end" aria-label="delete" color="danger" onClick={() => handleFileDelete(index)}>
+                          <DeleteIcon />
+                        </IconButton>
+                      }
+                    >
+                      <Typography variant="body2">{file.name}</Typography>
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </Grid>
+          </Grid>
+          <Box sx={{ my: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Button color="danger" startDecorator={<CancelIcon />}>
+              Cancel
+            </Button>
+            <Button sx={{ ml: 2 }} color="primary" startDecorator={<SaveIcon />}>
+              Save
+            </Button>
+          </Box>
+        </Paper>
+
+        {/*  */}
+        <br />
+        <br />
+        <br />
+        <Paper sx={{ width: '100%', padding: 2, boxShadow: 10 }}>
+          <Grid xs={6} >
+            <Box><h2>Approve</h2></Box>
+          </Grid>
+          <Grid container spacing={2} sx={{ flexGrow: 1 }}>
+
+
+            <Grid xs={5}>
+              <Box sx={{ my: 1 }}>
+                <FormLabel>แผนกที่ร้องขอ</FormLabel>
+                <Autocomplete
+                  placeholder="เลือกแผนก..."
+                  options={top100Films}
+                  variant="outlined" color="primary"
+                />
+              </Box>
+              <Box sx={{ my: 1 }}>
+                <FormLabel>ชื่อผู้ร้องขอ</FormLabel>
+                <Input placeholder="ชื่อ" variant="outlined" color="primary" type="text" />
+              </Box>
+              <Box sx={{ my: 1 }}>
+                <FormLabel>เบอร์ติดต่อ</FormLabel>
+                <Input placeholder="57976" variant="outlined" color="primary" type="text" />
+              </Box>
+
+              <Box>
+                <FormLabel>ประเภท</FormLabel>
+                <Select
+                  value={selectedType}
+                  onChange={handleTypeChange}
+                  variant='outlined' color='primary'
+                  placeholder="เลือกประเภท Request…"
+                  indicator={<KeyboardArrowDown />}
+                  sx={{
+                    [`& .${selectClasses.indicator}`]: {
+                      transition: '0.2s',
+                      [`&.${selectClasses.expanded}`]: {
+                        transform: 'rotate(-180deg)',
+                      },
+                    },
+                  }}
+                >
+                  <Option value="1">IT Request</Option>
+                  <Option value="2">IT Service</Option>
+                </Select>
+              </Box>
+
+
+
+              <Grid
+      container
+      rowSpacing={1}
+      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      sx={{ width: '100%', mt: 1 }}
+    >
+                <Grid size={8}>
+                  
+                    <FormLabel>Manager Approve</FormLabel>
+                    <Input variant="outlined" color="success" type='text' placeholder='IT Manager Name' />
+                 
+                </Grid>
+                <Grid size={4}>
+                  
+                    <FormLabel>Status</FormLabel>
+                    <Select
+                      action={action}
+                      value={value3}
+                      placeholder="Status"
+                      onChange={(e, newValue) => setValue3(newValue)}
+                      variant="outlined" color="success"
+                      {...(value3 && {
+                        // display the button and remove select indicator
+                        // when user has selected a value
+                        endDecorator: (
+                          <IconButton
+                            size="sm"
+                            variant="plain"
+                            color="neutral"
+                            onMouseDown={(event) => {
+                              // don't open the popup when clicking on this button
+                              event.stopPropagation();
+                            }}
+                            onClick={() => {
+                              setValue1(null);
+                              action.current?.focusVisible();
+                            }}
+                          >
+                            <CloseRounded />
+                          </IconButton>
+                        ),
+                        indicator: null,
+                      })}
+
+                    >
+                      <Option value="approve">อนุมัติ</Option>
+                      <Option value="unapprove">ไม่อนุมัติ</Option>
+                      <Option value="discuss">พิจารณา</Option>
+                      <Option value="cancel">ยกเลิก</Option>
+                    </Select>
+                 
+                </Grid>
+                <Grid size={8}>
+                  
+                    <FormLabel>Director Approve</FormLabel>
+                    <Input variant="outlined" color="warning" type='text' placeholder='IT Director Name' />
+                  
+                </Grid>
+                <Grid size={4}>
+               
+                    <FormLabel>Status</FormLabel>
+                    <Select
+                      action={action}
+                      value={value3}
+                      placeholder="Status"
+                      onChange={(e, newValue) => setValue3(newValue)}
+                      variant="outlined" color="warning"
+                      {...(value3 && {
+                        // display the button and remove select indicator
+                        // when user has selected a value
+                        endDecorator: (
+                          <IconButton
+                            size="sm"
+                            variant="plain"
+                            color="neutral"
+                            onMouseDown={(event) => {
+                              // don't open the popup when clicking on this button
+                              event.stopPropagation();
+                            }}
+                            onClick={() => {
+                              setValue1(null);
+                              action.current?.focusVisible();
+                            }}
+                          >
+                            <CloseRounded />
+                          </IconButton>
+                        ),
+                        indicator: null,
+                      })}
+
+                    >
+                      <Option value="approve">อนุมัติ</Option>
+                      <Option value="unapprove">ไม่อนุมัติ</Option>
+                      <Option value="discuss">พิจารณา</Option>
+                      <Option value="cancel">ยกเลิก</Option>
+                    </Select>
+                 
+                </Grid>
+              </Grid>
+
+
+              
+
+
+            </Grid>
+
+            <Grid xs={7}>
+              {renderRequestContent(selectedType)}
+              {renderProgramsContent(selectedPro)}
+
               <Box sx={{ my: 1 }}>
 
                 <FormLabel>หัวข้อเรื่อง</FormLabel>
@@ -1177,23 +609,22 @@ function Services() {
                 </List>
               </Box>
 
-              
-            </Grid>
-            
-            {renderApproveContent(selectedApproved)}
 
-            <Box sx={{ my: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Button color="danger" startDecorator={<CancelIcon />}>
-                Cancel
-              </Button>
-              <Button sx={{ ml: 2 }} color="primary" startDecorator={<SaveIcon />}>
-                Save
-              </Button>
-            </Box>
+            </Grid>
 
 
           </Grid>
+
+          <Box sx={{ my: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Button color="danger" startDecorator={<CancelIcon />}>
+              Cancel
+            </Button>
+            <Button sx={{ ml: 2 }} color="primary" startDecorator={<SaveIcon />}>
+              Save
+            </Button>
+          </Box>
         </Paper>
+
       </Container>
     </React.Fragment>
   );
