@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Autocomplete from '@mui/joy/Autocomplete';
@@ -30,7 +30,17 @@ import { styled } from '@mui/joy/styles';
 
 import TabsBottomNavExample from '../Tabs';
 
-
+const Item = styled(Sheet)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography['body-sm'],
+  padding: theme.spacing(0.1),
+  textAlign: 'center',
+ 
+  color: theme.vars.palette.text.secondary,
+  ...theme.applyStyles('dark', {
+    backgroundColor: theme.palette.background.level1,
+  }),
+}));
 
 function Services() {
   const [files, setFiles] = useState<File[]>([]);
@@ -181,12 +191,20 @@ function Services() {
   const [index, setIndex] = React.useState(0);
   const colors = ['primary', 'danger', 'success', 'warning'] as const;
 
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0];
+    setCurrentDate(formattedDate);
+  }, []);
+
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-      
-<TabsBottomNavExample />
+
+        <TabsBottomNavExample />
 
         <br />
         <Paper sx={{ width: '100%', padding: 2, boxShadow: 10 }}>
@@ -401,22 +419,16 @@ function Services() {
                 </Select>
               </Box>
 
-
-
-              <Grid
-      container
-      rowSpacing={1}
-      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-      sx={{ width: '100%', mt: 1 }}
-    >
-                <Grid size={8}>
+              <div>
+                <Stack
+                  direction={{ xs: 'column', sm: 'row' }}
                   
+                >
+                  <Item>
                     <FormLabel>Manager Approve</FormLabel>
-                    <Input variant="outlined" color="success" type='text' placeholder='IT Manager Name' />
-                 
-                </Grid>
-                <Grid size={4}>
-                  
+                    <Input variant="outlined" color="success" type='text' placeholder='Manager Name' />
+                  </Item>
+                  <Item>
                     <FormLabel>Status</FormLabel>
                     <Select
                       action={action}
@@ -453,16 +465,28 @@ function Services() {
                       <Option value="discuss">พิจารณา</Option>
                       <Option value="cancel">ยกเลิก</Option>
                     </Select>
-                 
-                </Grid>
-                <Grid size={8}>
-                  
+                  </Item>
+                  <Item>
+                    <FormLabel>Date</FormLabel>
+                    <Input
+                      type='date'
+                      variant="outlined"
+                      color="success"
+                      value={currentDate}
+                      readOnly // ทำให้ input ไม่สามารถเปลี่ยนแปลงได้
+                    />
+                  </Item>
+                </Stack>
+              
+                <Stack
+                  direction={{ xs: 'column', sm: 'row' }}
+                  spacing={{ xs: 0, sm: 0, md: 0 }}
+                >
+                  <Item>
                     <FormLabel>Director Approve</FormLabel>
-                    <Input variant="outlined" color="warning" type='text' placeholder='IT Director Name' />
-                  
-                </Grid>
-                <Grid size={4}>
-               
+                    <Input variant="outlined" color="warning" type='text' placeholder='Director Name' />
+                  </Item>
+                  <Item>
                     <FormLabel>Status</FormLabel>
                     <Select
                       action={action}
@@ -499,12 +523,21 @@ function Services() {
                       <Option value="discuss">พิจารณา</Option>
                       <Option value="cancel">ยกเลิก</Option>
                     </Select>
-                 
-                </Grid>
-              </Grid>
+                  </Item>
+                  <Item>
+                    <FormLabel>Date</FormLabel>
+                    <Input
+                      type='date'
+                      variant="outlined"
+                      color="warning"
+                      value={currentDate}
+                      readOnly // ทำให้ input ไม่สามารถเปลี่ยนแปลงได้
+                    />
+                  </Item>
+                </Stack>
+              </div>
 
 
-              
 
 
             </Grid>
