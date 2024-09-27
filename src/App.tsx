@@ -12,6 +12,7 @@ import ServiceDetails from './components/it-services/ServiceDetails';
 import ITAdminForm from './components/it-services/ITAdminForm';
 import ManagerApprovePage from './components/it-services/ManagerApprove';
 import TaskManagementMockup from './components/it-services/task-management';
+import Manager_Approve from './components/it-services/ITManage_Approve';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Navbar />
       <br />
       <Routes>
+      ITManage_Approve.tsx
         <Route path="/" element={<ListServices />} />
         {/* <Route path="/" element={<TaskManagementMockup/>} /> */}
         <Route path="/list-services" element={<ListServices />} />
@@ -27,6 +29,7 @@ function App() {
         <Route path="/service/:id" element={<ServiceDetails />} />
         <Route path="/it-admin" element={<ITAdminForm />} />
         <Route path="/it-manager" element={<ManagerApprovePage />} />
+        <Route path="/it-manager_approve" element={<Manager_Approve />} />
         <Route path="/it-hardware" element={<ITHardware />} />
         <Route path="/it-development" element={<ITDevelopment />} />
         <Route path="/DataGridUAT" element={<DataGridUAT />}  />

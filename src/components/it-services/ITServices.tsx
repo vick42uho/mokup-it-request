@@ -28,17 +28,9 @@ import Sheet from '@mui/joy/Sheet';
 import { styled } from '@mui/joy/styles';
 
 
-const Item = styled(Sheet)(({ theme }) => ({
-  backgroundColor: '#fff',
-  ...theme.typography['body-sm'],
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  borderRadius: 4,
-  color: theme.vars.palette.text.secondary,
-  ...theme.applyStyles('dark', {
-    backgroundColor: theme.palette.background.level1,
-  }),
-}));
+import TabsBottomNavExample from '../Tabs';
+
+
 
 function Services() {
   const [files, setFiles] = useState<File[]>([]);
@@ -185,10 +177,17 @@ function Services() {
     }
   };
 
+
+  const [index, setIndex] = React.useState(0);
+  const colors = ['primary', 'danger', 'success', 'warning'] as const;
+
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
+      
+<TabsBottomNavExample />
+
         <br />
         <Paper sx={{ width: '100%', padding: 2, boxShadow: 10 }}>
           <Grid xs={6} >
